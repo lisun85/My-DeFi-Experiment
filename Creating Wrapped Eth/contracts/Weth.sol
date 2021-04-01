@@ -1,12 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-
 import '@OpenZeppelin/contracts/token/ERC20/ERC20.sol';
 
 contract Weth is ERC20 {
-    address payable public reciever;
-    
     
     constructor() ERC20('Wrapped Ether', "WETH") {}
 
@@ -17,7 +14,7 @@ contract Weth is ERC20 {
     function withdrwal(uint amount) external payable {
         require(balanceOf(msg.sender) >= amount, "balance too low");
         _burn(msg.sender, amount);
-        reciever.transfer(amount);
+        payable(msg.sender).transfer(amount);
     }
 
     function Ethbalance() external view returns(uint)  {
