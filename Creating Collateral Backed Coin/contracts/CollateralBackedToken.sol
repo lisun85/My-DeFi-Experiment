@@ -1,5 +1,6 @@
 pragma solidity ^0.8.0;
 
+import '@openzeppelin/contracts/token/ERC20/ERC20.sol';
 import '@openzeppelin/contracts/token/ERC20/iERC20.sol;
 
 contract CollateralBackedToken is ERC20 {
